@@ -29,15 +29,15 @@ describe('GET /api/grudges/:id', function() {
     done();
     });
   });
-});
 
-describe('GET /api/grudges/:id', function() {
-  it('should return an error status if id does not match a grudge', function(done) {
-    chai.request(server)
-    .get('/api/grudges/3')
-    .end(function(err, res) {
-    res.should.have.status(404);
-    done();
+  context('when an id does not match a grudge', function() {
+    it('should return an error status', function(done) {
+      chai.request(server)
+      .get('/api/grudges/3')
+      .end(function(err, res) {
+      res.should.have.status(404);
+      done();
+      });
     });
   });
 });
