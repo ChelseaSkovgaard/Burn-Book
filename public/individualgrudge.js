@@ -1,5 +1,3 @@
-const burnDetails = $('.individual-grudge');
-
 $(document).ready(function() {
   const id = parseInt(window.location.pathname.split("/")[1]);
   getIndividualGrudgeFromServer(id);
@@ -22,7 +20,7 @@ const updateForgivenessStatus = (id) => {
 }
 
 const clearDetails = () => {
-  burnDetails.html('');
+  $('.individual-grudge').html('');
 }
 
 const appendGrudge = (grudge) => {
@@ -32,5 +30,5 @@ const appendGrudge = (grudge) => {
     let status = grudge.grudge.status;
     let id = grudge.grudge.id;
     let individualGrudge = individualGrudgeTemplate(name, offense, date, status, id)
-    burnDetails.append(individualGrudge)
+    $('.individual-grudge').append(individualGrudge)
   }

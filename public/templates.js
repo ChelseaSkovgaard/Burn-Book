@@ -13,8 +13,8 @@ function grudgeListTemplate(id, name) {
 
 function individualGrudgeTemplate(name, offense, date, status, id) {
   return `<article class="individual-grudge">
-    <h4>
-      <span class="burn-category" class="name">
+    <h4 class="name">
+      <span class="burn-category" >
         Name:
       </span>
       ${name}
@@ -26,13 +26,13 @@ function individualGrudgeTemplate(name, offense, date, status, id) {
       ${offense}
     </p>
     <p>
-      <span class="burn-category">
+      <span class="burn-category" class="date">
         Date Added:
       </span>
       ${date}
     </p>
     <p>
-      <span class="burn-category"> Forgiven: </span>
+      <span class="burn-category" class="status"> Forgiven: </span>
       ${status}
     </p>
     <input class="forgive-btn" onClick="updateForgivenessStatus(${id})" type="submit" value="Forgive"/>

@@ -22,7 +22,7 @@ describe('grudgeListTemplate', function(){
 })
 
 describe('individualGrudgeTemplate', function(){
-    var id, name, offense, date, status, $subject;
+    var id, name, offense, date, status, $subjectIndividual;
 
     beforeEach(function(){
       id: 0
@@ -30,35 +30,11 @@ describe('individualGrudgeTemplate', function(){
       offense: 'stinky farts'
       date: 'Thu Feb 23 2017 12:21:11 GMT-0700 (MST)'
       status: false
-      var subject = individualGrudgeTemplate(id, name, offense, date, status)
-      $subject = $(subject)
+      var subjectIndividual = individualGrudgeTemplate(name, offense, date, status, id)
+      $subjectIndividual = $(subjectIndividual)
     });
 
     it('generates an article', function(){
-      $subject.is('article')
-    });
-
-    it('contains name and id information', function(){
-      var name = document.getElementsByClassName('name')
-      var name = document.getElementsByClassName('name')
-      var name = document.getElementsByClassName('name')
-      var name = document.getElementsByClassName('name')
-      
-      it('has the correct text for name', function(){
-        expect(name.innerHTML).to.equal('Chloe')
-      });
-
-      it('has the correct text for offense', function(){
-        expect(name.innerHTML).to.equal('Chloe')
-      });
-
-      it('has the correct text for name', function(){
-        expect(name.innerHTML).to.equal('Chloe')
-      });
-
-      it('has the correct text for name', function(){
-        expect(name.innerHTML).to.equal('Chloe')
-      });
-
+      $subjectIndividual.is('article')
     });
 })

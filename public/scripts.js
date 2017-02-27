@@ -52,7 +52,7 @@ const sortGrudgesName = () => {
   axios.get('/api/grudges')
     .then(response => {
       let grudges = response.data;
-      sortByName(grudges);
+      sortName(grudges);
     })
 }
 
@@ -60,7 +60,7 @@ const sortGrudgesDate = () => {
   axios.get('/api/grudges')
     .then(response => {
       let grudges = response.data;
-      sortByDate(grudges);
+      sortDate(grudges);
     })
 }
 
@@ -87,33 +87,13 @@ const appendGrudges = (grudges) => {
   }
 }
 
-const sortByName = (grudges) => {
-  let sortedGrudges = grudges.sort((a, b) => {
-    const nameA = a.name.toUpperCase();
-    const nameB = b.name.toUpperCase();
-    if (nameA > nameB) {
-      return 1;
-    } else if (nameB > nameA) {
-      return -1;
-    } else {
-      return 0;
-    }
-    });
+const sortName = (grudges) => {
+  let sortedGrudges = sortByName(grudges)
   appendGrudges(sortedGrudges);
 }
 
-const sortByDate = (grudges) => {
-  let sortedGrudges = grudges.sort((a, b) => {
-    const dateA = a.date;
-    const dateB = b.date;
-    if (dateA > dateB) {
-      return 1;
-    } else if (dateB > dateA) {
-      return -1;
-    } else {
-      return 0;
-    }
-    });
+const sortDate = (grudges) => {
+  let sortedGrudges = sortByDate(grudges)
   appendGrudges(sortedGrudges);
 }
 
