@@ -1,19 +1,11 @@
-const burnList = $('.list-container');
-const peopleCount = $('#total-people');
-const forgivenCount = $('#total-forgiven');
-const unforgivenCount = $('#total-unforgiven');
-const listContainer = $('.list-container');
-const nameInput = $('#name-input');
-const offenseInput = $('#offense-input');
-
 $(document).ready(function() {
   getGrudgesFromServer();
-})
+});
 
 $('.submit-btn').on('click', (e) => {
   e.preventDefault();
-  const name = nameInput.val();
-  const offense = offenseInput.val();
+  const name = $('#name-input').val();
+  const offense = $('#offense-input').val();
   const status = false;
   const date = new Date();
   const id = $('article.burn-item').length;
@@ -45,7 +37,7 @@ const getGrudgesFromServer = () => {
     let grudges = response.data;
     appendGrudges(grudges);
     countPeople(grudges);
-  })
+  });
 }
 
 const sortGrudgesName = () => {
@@ -53,7 +45,7 @@ const sortGrudgesName = () => {
     .then(response => {
       let grudges = response.data;
       sortName(grudges);
-    })
+  });
 }
 
 const sortGrudgesDate = () => {
@@ -61,29 +53,15 @@ const sortGrudgesDate = () => {
     .then(response => {
       let grudges = response.data;
       sortDate(grudges);
-    })
+  });
 }
 
-const clearInputs = () => {
-  nameInput.val('');
-  offenseInput.val('');
-}
-
-const clearList = () => {
-  listContainer.html('');
-}
-
-const clearCount = () => {
-  peopleCount.html('');
-  forgivenCount.html('');
-  unforgivenCount.html('');
-}
 const appendGrudges = (grudges) => {
   for (var i = 0; i < grudges.length; i++) {
     let name = grudges[i].name
     let id = grudges[i].id
     let grudgeList= grudgeListTemplate(id, name)
-    burnList.append(grudgeList)
+    $('.list-container').append(grudgeList)
   }
 }
 
@@ -102,13 +80,13 @@ const countPeople = (grudges) => {
   let count = grudges.length;
   let forgiven = grudges.filter(grudges => grudges.status === true).length;
   let unforgiven = grudges.filter(grudges => grudges.status !== true).length;
-  peopleCount.append(
+  $('#total-people').append(
     `<span> ${count} </span>`
   )
-  forgivenCount.append(
+  $('#total-forgiven').append(
     `<span> ${forgiven} </span>`
   )
-  unforgivenCount.append(
+  $('#total-unforgiven').append(
     `<span> ${unforgiven} </span>`
   )
 }
